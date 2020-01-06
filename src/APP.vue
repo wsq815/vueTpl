@@ -8,11 +8,12 @@
 import axios from "axios";
 import api from "../mock/api.js";
 export default {
-  async created() {
-    let res = await axios.get(api.getUserInfo);
-    console.log(res);
-  }
+    async created() {
+        let res = await axios.get(api.getUserInfo);
+        console.log(res);
+    }
 };
+
 </script>
 <style lang="scss">
 $black: black;

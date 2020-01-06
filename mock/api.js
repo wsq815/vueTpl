@@ -1,3 +1,3 @@
 module.exports = {
-    getUserInfo: "/api/getUserInfo"
+    getUserInfo: '/api/getUserInfo'
 }

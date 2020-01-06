@@ -2,6 +2,8 @@ const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
+const StyleLintPlugin = require("stylelint-webpack-plugin");
+
 module.exports = {
     entry: {
         app: './src/app.js'
@@ -33,6 +35,15 @@ module.exports = {
               test: /\.js$/,
               exclude: /node_modules/,
               loader: "babel-loader"
+            },
+            {
+              test: /\.(js|vue)$/,
+              exclude: /node_modules/,
+              enforce: "pre",
+              options: {
+                formatter: require("eslint-friendly-formatter")
+              },
+              loader: "eslint-loader",
             },
             {
                 test: /\.scss$/,
@@ -91,6 +102,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: "./public/index.html",
             title: "项目模板"
+        }),
+        new StyleLintPlugin({
+          files: ["src/**/*.{vue,css,scss,sass}"]
         })
     ]
 }
